@@ -2,6 +2,10 @@ variable "name" {}
 
 variable "cidr" {}
 
+variable "provider" {
+  description = "The terraform provider to create VPC with."
+}
+
 variable "public_subnets" {
   description = "A list of public subnets inside the VPC."
   default     = []
