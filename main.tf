@@ -5,11 +5,21 @@ resource "aws_vpc" "mod" {
 
   tags {
     Name = "${var.name}"
+    owner = "${var.owner}"
+    service = "${var.service}"
+    environment = "${var.environment}"
+    subservice = "vpc"
   }
 }
 
 resource "aws_internet_gateway" "mod" {
   vpc_id = "${aws_vpc.mod.id}"
+  tags {
+    owner = "${var.owner}"
+    service = "${var.service}"
+    environment = "${var.environment}"
+    subservice = "gateway"
+  }
 }
 
 resource "aws_route_table" "public" {
@@ -18,6 +28,10 @@ resource "aws_route_table" "public" {
 
   tags {
     Name = "${var.name}-public"
+    owner = "${var.owner}"
+    service = "${var.service}"
+    environment = "${var.environment}"
+    subservice = "public-route-table"
   }
 }
 
@@ -33,6 +47,10 @@ resource "aws_route_table" "private" {
 
   tags {
     Name = "${var.name}-private"
+    owner = "${var.owner}"
+    service = "${var.service}"
+    environment = "${var.environment}"
+    subservice = "private-route-table"
   }
 }
 
@@ -44,6 +62,10 @@ resource "aws_subnet" "private" {
 
   tags {
     Name = "${var.name}-private"
+    owner = "${var.owner}"
+    service = "${var.service}"
+    environment = "${var.environment}"
+    subservice = "private-subnet"
   }
 }
 
@@ -55,6 +77,10 @@ resource "aws_subnet" "public" {
 
   tags {
     Name = "${var.name}-public"
+    owner = "${var.owner}"
+    service = "${var.service}"
+    environment = "${var.environment}"
+    subservice = "public-subnet"
   }
 
   map_public_ip_on_launch = true

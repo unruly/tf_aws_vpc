@@ -1,6 +1,10 @@
 variable "name" {}
-
 variable "cidr" {}
+
+# Standard compulsory tags
+variable "owner" {}
+variable "service" {}
+variable "environment" {}
 
 variable "public_subnets" {
   description = "A list of public subnets inside the VPC."
